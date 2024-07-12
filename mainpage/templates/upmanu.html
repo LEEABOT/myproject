@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>上传菜谱</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/upmanu.css' %}">
+</head>
+<body>
+<div class="top-bar">
+    <div class="w">
+        <ul class="bar-left left">
+            <li><a title="首页" href="/mainpage/home" class="on">首页</a></li>
+            <li><a title="搜索" href="/mainpage/search" class="on">搜索</a></li>
+            <li><a title="上传菜谱" href="/mainpage/upload" class="on">上传菜谱</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="search-container" style="margin-top: 100px;">
+    <form action="" method="post" style="padding: 20px;">
+        {% csrf_token %}
+        <h2>上传你的菜谱</h2>
+        <div class="form-item">
+            <label for="foodname">菜名</label>
+            <input type="text" id="foodname" name="foodname" class="form-control">
+        </div>
+        <div class="form-item">
+            <label for="foodmaterial">食材配比</label>
+            <textarea id="foodmaterial" name="foodmaterial" class="form-control"></textarea>
+        </div>
+        <div class="form-item">
+            <label for="foodstep">制作步骤</label>
+            <textarea id="foodstep" name="foodstep" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="submit-button">上传</button>
+    </form>
+</div>
+
+</body>
+</html>
+
+

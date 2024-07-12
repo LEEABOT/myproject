@@ -1,0 +1,118 @@
+<html class=""><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8;">
+<title>首页 </title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+</head>
+<body style="">
+<div class="top-bar" id="J_top_bar">
+    <div class="w">
+        <div class="bar-right right">
+           <span class="user-welcome">欢迎, {{ user_name }}</span>
+        </div>
+        <ul class="bar-left left">
+            <li><a title="首页" href="/mainpage/home" class="on">首页</a></li>
+            <li><a title="搜索" href="/mainpage/search" class="on">搜索</a></li>
+            <li><a title="上传菜谱" href="/mainpage/upload" class="on">上传菜谱</a></li>
+        </ul>
+    </div>
+</div>
+<div class="w logo_wrap2">
+
+<div class="search-container">
+    <form action="{% url 'search' %}" method="get">
+        <input type="text" name="q" class="search-box" placeholder="请输入菜名...">
+        <button type="submit" class="search-button">搜索菜谱</button>
+    </form>
+</div>
+
+
+<script>
+  // 获取搜索框和搜索按钮
+  const searchBox = document.querySelector('.search-box');
+  const searchButton = document.querySelector('.search-button');
+
+  // 为搜索按钮添加点击事件监听器
+  searchButton.addEventListener('click', function() {
+    // 获取搜索框中的值
+    const searchText = searchBox.value.trim();
+
+    // 如果搜索框不为空
+    if(searchText) {
+      // 构建目标URL
+      const targetUrl = `https://home.meishichina.com/search/${encodeURIComponent(searchText)}/`;
+      // 重定向到目标URL
+      window.location.href = targetUrl;
+    }
+  });
+</script>
+
+
+</div>
+<div class="wrap">
+	<div class="w clear">
+		<div class="fbox" id="w1">
+			<div class="titlebar">
+				<div class="titlebar_wrap">
+					<h2 class="on"><a href="javascript:void(0);">精选</a></h2>
+				</div>
+			</div>
+			<div class="row">
+				<ul class="plist plist-4 on">
+					<li>
+    <a title="糯米排骨" target="_blank">
+        <i><img alt="糯米排骨" class="imgLoad" src="{% static 'images/糯米排骨.jpg' %}" style="display: block;"></i>
+        <div>糯米排骨</div>
+    </a>
+</li>
+<li>
+    <a title="东坡肘子" target="_blank">
+        <i><img alt="东坡肘子" class="imgLoad" src="{% static 'images/东坡肘子.jpg' %}" style="display: block;"></i>
+        <div>东坡肘子</div>
+    </a>
+</li>
+<li>
+    <a title="烤羊排" target="_blank">
+        <i><img alt="烤羊排" class="imgLoad" src="{% static 'images/烤羊排.jpg' %}" style="display: block;"></i>
+        <div>烤羊排</div>
+    </a>
+</li>
+<li>
+    <a title="风味烤串" target="_blank">
+        <i><img alt="风味烤串" class="imgLoad" src="{% static 'images/风味烤串.jpg' %}" style="display: block;"></i>
+        <div>风味烤串</div>
+    </a>
+</li>
+<li>
+    <a title="柠檬凤爪" target="_blank">
+        <i><img alt="柠檬凤爪" class="imgLoad" src="{% static 'images/柠檬凤爪.jpg' %}" style="display: block;"></i>
+        <div>柠檬凤爪</div>
+    </a>
+</li>
+<li>
+    <a title="电饭锅叉烧" target="_blank">
+        <i><img alt="电饭锅叉烧" class="imgLoad" src="{% static 'images/电饭锅叉烧.jpg' %}" style="display: block;"></i>
+        <div>电饭锅叉烧</div>
+    </a>
+</li>
+<li>
+    <a title="卤猪蹄" target="_blank">
+        <i><img alt="卤猪蹄" class="imgLoad" src="{% static 'images/卤猪蹄.jpg' %}" style="display: block;"></i>
+        <div>卤猪蹄</div>
+    </a>
+</li>
+<li>
+    <a title="沙茶排骨煲" target="_blank">
+        <i><img alt="沙茶排骨煲" class="imgLoad" src="{% static 'images/沙茶排骨煲.jpg' %}" style="display: block;"></i>
+        <div>沙茶排骨煲</div>
+    </a>
+</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索页</title>
+    {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+</head>
+<body>
+<div class="top-bar">
+    <div class="w">
+
+        <ul class="bar-left left">
+            <li><a title="首页" href="/mainpage/home" class="on">首页</a></li>
+            <li><a title="搜索" href="/mainpage/search" class="on">搜索</a></li>
+            <li><a title="上传菜谱" href="/mainpage/upload" class="on">上传菜谱</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="search-container">
+    <form action="/mainpage/search" method="get">
+        <input type="text" name="q" class="search-box" placeholder="请输入菜名...">
+        <button type="submit" class="search-button">搜索菜谱</button>
+    </form>
+</div>
+
+<div class="wrap">
+    <div class="w">
+        {% if foods %}
+        <table>
+            <tr>
+                <th>菜名</th>
+                <th>图片</th>
+                <th>食材配比</th>
+                <th>制作步骤</th>
+            </tr>
+            {% for food in foods %}
+            <tr>
+                <td>{{ food.foodname }}</td>
+                <td><img src="{{ food.picsrc }}" alt="{{ food.foodname }}" class="food-image"></td>
+                <td>{{ food.foodmaterial }}</td>
+                <td>{{ food.foodstep }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p class="no-match">没有找到匹配的菜谱。</p>
+        {% endif %}
+    </div>
+</div>
+<div class="pagination" style="text-align: center;">
+    {% if foods.has_previous %}
+        <a href="?q={{ query }}&page=1">&laquo; 第一页</a>
+        <a href="?q={{ query }}&page={{ foods.previous_page_number }}">上一页</a>
+    {% endif %}
+
+    <span class="current">第 {{ foods.number }} 页</span>
+
+    {% if foods.has_next %}
+        <a href="?q={{ query }}&page={{ foods.next_page_number }}">下一页</a>
+        <a href="?q={{ query }}&page={{ foods.paginator.num_pages }}">最后一页 &raquo;</a>
+    {% endif %}
+</div>
+
+</body>
+</html>
